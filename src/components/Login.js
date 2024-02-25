@@ -44,7 +44,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const { data } = await axios.post("http://localhost:8081/api/teachers/login", teacherDetails);
+      const { data } = await axios.post("https://sql-autograder-backend.vercel.app/api/teachers/login", teacherDetails);
       if (data.token) {
         localStorage.setItem("Token", data.token);
         navigate("/teacher");
@@ -62,7 +62,10 @@ function Login() {
     setLoading(true);
 
     try {
-      const { data } = await axios.post("http://localhost:8081/api/students/register", studentDetails);
+      const { data } = await axios.post(
+        "https://sql-autograder-backend.vercel.app/api/students/register",
+        studentDetails
+      );
       if (data.success) {
         const { student, quiz } = data;
         if (quiz.open) navigate("/quiz", { state: { student, quiz } });

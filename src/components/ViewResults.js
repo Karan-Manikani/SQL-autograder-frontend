@@ -9,7 +9,7 @@ function ViewResults() {
 
   async function fetchStudents(quizID) {
     try {
-      const { data } = await axios.get(`http://localhost:8081/api/quiz/fetch-students/${quizID}`, {
+      const { data } = await axios.get(`https://sql-autograder-backend.vercel.app/api/quiz/fetch-students/${quizID}`, {
         headers: { Authorization: localStorage.getItem("Token") },
       });
       setStudents(data.response);

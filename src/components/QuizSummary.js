@@ -17,7 +17,7 @@ function QuizSummary(props) {
     setIsLoading(true);
     try {
       const { data } = await axios.patch(
-        `http://localhost:8081/api/quiz/open/${props.quiz._id}`,
+        `https://sql-autograder-backend.vercel.app/api/quiz/open/${props.quiz._id}`,
         {},
         {
           headers: { Authorization: localStorage.getItem("Token") },
@@ -35,7 +35,7 @@ function QuizSummary(props) {
     setIsLoading(true);
     try {
       const { data } = await axios.patch(
-        `http://localhost:8081/api/quiz/close/${props.quiz._id}`,
+        `https://sql-autograder-backend.vercel.app/api/quiz/close/${props.quiz._id}`,
         {},
         {
           headers: { Authorization: localStorage.getItem("Token") },
@@ -51,9 +51,12 @@ function QuizSummary(props) {
 
   async function deleteQuiz() {
     try {
-      const { data } = await axios.delete(`http://localhost:8081/api/quiz/delete/${props.quiz._id}`, {
-        headers: { Authorization: localStorage.getItem("Token") },
-      });
+      const { data } = await axios.delete(
+        `https://sql-autograder-backend.vercel.app/api/quiz/delete/${props.quiz._id}`,
+        {
+          headers: { Authorization: localStorage.getItem("Token") },
+        }
+      );
       if (data.success) {
         props.deleteQuizFromState(props.quiz._id);
         window.location.reload(false);

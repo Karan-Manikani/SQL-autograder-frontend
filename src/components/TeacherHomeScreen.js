@@ -13,7 +13,7 @@ function TeacherHomeScreen() {
 
   async function fetchTeacherDetails(token) {
     try {
-      const { data } = await axios.get("http://localhost:8081/api/teachers/me", {
+      const { data } = await axios.get("https://sql-autograder-backend.vercel.app/api/teachers/me", {
         headers: { Authorization: token },
       });
       setTeacherDetails(data.response);
@@ -24,7 +24,7 @@ function TeacherHomeScreen() {
 
   async function fetchQuizzes(token) {
     try {
-      const { data } = await axios.get("http://localhost:8081/api/quiz/fetch-quizzes", {
+      const { data } = await axios.get("https://sql-autograder-backend.vercel.app/api/quiz/fetch-quizzes", {
         headers: { Authorization: token },
       });
 
@@ -45,9 +45,12 @@ function TeacherHomeScreen() {
   async function fetchStudentsEnrolled(token, quiz) {
     let newQuizObj = {};
     try {
-      const { data } = await axios.get(`http://localhost:8081/api/quiz/fetch-students/${quiz._id}`, {
-        headers: { Authorization: token },
-      });
+      const { data } = await axios.get(
+        `https://sql-autograder-backend.vercel.app/api/quiz/fetch-students/${quiz._id}`,
+        {
+          headers: { Authorization: token },
+        }
+      );
 
       if (data.success) newQuizObj = { ...quiz, studentsEnrolled: data.response.length };
     } catch (error) {

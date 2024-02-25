@@ -98,16 +98,19 @@ function Quiz() {
     }
 
     try {
-      const { data } = await axios.post("http://localhost:8081/api/students/submit-quiz", {
+      const { data } = await axios.post("https://sql-autograder-backend.vercel.app/api/students/submit-quiz", {
         answers: answersBackend,
         rollNumber: student.rollNumber,
         quizID: quiz._id,
       });
       if (data.success) {
-        const { data: checkData } = await axios.post("http://localhost:8081/api/students/grade-queries", {
-          studentID: student._id,
-          quizID: quiz._id,
-        });
+        const { data: checkData } = await axios.post(
+          "https://sql-autograder-backend.vercel.app/api/students/grade-queries",
+          {
+            studentID: student._id,
+            quizID: quiz._id,
+          }
+        );
         navigate("/quiz/successful", { state: { student: checkData.response } });
       }
       if (!data.success) navigate("/quiz/unsuccessful");

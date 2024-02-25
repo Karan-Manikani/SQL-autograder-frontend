@@ -149,7 +149,7 @@ function NewQuiz() {
       formData.append("excelFile", fileInput.files[0]);
       formData.append("_id", id);
       formData.append("fileName", fileName);
-      const { data } = await axios.post("http://localhost:8081/api/quiz/upload-excel", formData, {
+      const { data } = await axios.post("https://sql-autograder-backend.vercel.app/api/quiz/upload-excel", formData, {
         headers: { Authorization: localStorage.getItem("Token") },
       });
       if (data.success) {
@@ -157,7 +157,7 @@ function NewQuiz() {
         navigate("/teacher");
         setLoading(false);
         const { NoData } = await axios.post(
-          `http://localhost:8081/api/quiz/answers/${data.response._id}`,
+          `https://sql-autograder-backend.vercel.app/api/quiz/answers/${data.response._id}`,
           {},
           {
             headers: { Authorization: localStorage.getItem("Token") },
@@ -180,7 +180,7 @@ function NewQuiz() {
       primaryKeys: primaryKeys,
     };
     try {
-      const { data } = await axios.post("http://localhost:8081/api/quiz/create-quiz", quizObject, {
+      const { data } = await axios.post("https://sql-autograder-backend.vercel.app/api/quiz/create-quiz", quizObject, {
         headers: { Authorization: localStorage.getItem("Token") },
       });
       if (data.success) uploadExcelFile(data.response._id);

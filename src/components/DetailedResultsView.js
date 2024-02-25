@@ -10,7 +10,7 @@ function DetailedResultsView() {
 
   async function fetchStudent(studentID) {
     try {
-      const { data } = await axios.get(`http://localhost:8081/api/students/${studentID}`);
+      const { data } = await axios.get(`https://sql-autograder-backend.vercel.app/api/students/${studentID}`);
       if (data.success) setStudent(data.response);
     } catch (error) {
       console.log(error);
@@ -19,7 +19,7 @@ function DetailedResultsView() {
 
   async function fetchQuiz(quizID) {
     try {
-      const { data } = await axios.get(`http://localhost:8081/api/quiz/fetch-one/${quizID}`);
+      const { data } = await axios.get(`https://sql-autograder-backend.vercel.app/api/quiz/fetch-one/${quizID}`);
       if (data.success) setQuiz(data.response);
     } catch (error) {
       console.log(error);
@@ -53,9 +53,7 @@ function DetailedResultsView() {
         <p className="text-[#5e5e5e]">
           {quiz.branch} - {quiz.year}
         </p>
-        <p className="text-[#5e5e5e] font-bold">
-          Final Score - {student.answers && calculateTotal(student.answers)}
-        </p>
+        <p className="text-[#5e5e5e] font-bold">Final Score - {student.answers && calculateTotal(student.answers)}</p>
       </section>
       <section>
         {quiz &&
