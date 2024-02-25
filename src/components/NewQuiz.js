@@ -58,9 +58,7 @@ function NewQuiz() {
       <select
         className="rounded-md ml-2 bg-[#f0f0f0] p-1 text-[#5e5e5e]"
         value={primaryKeys[tableName]}
-        onChange={(e) =>
-          setPrimaryKeys((prevPrimaryKeys) => ({ ...prevPrimaryKeys, [tableName]: e.target.value }))
-        }
+        onChange={(e) => setPrimaryKeys((prevPrimaryKeys) => ({ ...prevPrimaryKeys, [tableName]: e.target.value }))}
       >
         {columns.map((column) => (
           <option value={column}>{column}</option>
@@ -193,7 +191,7 @@ function NewQuiz() {
   }
 
   function renderButtonContent() {
-    if (loading) return <Loader size="20px" white={true} />;
+    if (loading) return <Loader size="1.5rem" white={true} />;
     return "Create Quiz";
   }
 
@@ -246,10 +244,7 @@ function NewQuiz() {
         <section className="mt-8">
           <h1 className="text-xl">Database Upload</h1>
           <div className="mt-4 flex items-center">
-            <label
-              htmlFor="fileInput"
-              className="py-2 px-4 bg-[#4796ff] rounded text-[#FFF] cursor-pointer"
-            >
+            <label htmlFor="fileInput" className="py-2 px-4 bg-[#4796ff] rounded text-[#FFF] cursor-pointer">
               Upload Excel File
             </label>
             <input
@@ -341,7 +336,7 @@ function NewQuiz() {
         </section>
         <div className="grid grid-cols-1 place-items-center">
           <button
-            className="mt-8 py-2 px-4 bg-[#4796ff] rounded text-[#FFF] w-1/4"
+            className="mt-8 py-2 px-4 bg-[#4796ff] rounded text-[#FFF] w-1/4 grid place-items-center"
             onClick={handleSubmit}
           >
             {renderButtonContent()}

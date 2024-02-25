@@ -45,12 +45,9 @@ function TeacherHomeScreen() {
   async function fetchStudentsEnrolled(token, quiz) {
     let newQuizObj = {};
     try {
-      const { data } = await axios.get(
-        `http://localhost:8081/api/quiz/fetch-students/${quiz._id}`,
-        {
-          headers: { Authorization: token },
-        }
-      );
+      const { data } = await axios.get(`http://localhost:8081/api/quiz/fetch-students/${quiz._id}`, {
+        headers: { Authorization: token },
+      });
 
       if (data.success) newQuizObj = { ...quiz, studentsEnrolled: data.response.length };
     } catch (error) {
@@ -101,11 +98,7 @@ function TeacherHomeScreen() {
                 </div>
                 <div className="grid grid-cols-2 gap-8 mt-12">
                   {quizzes.map((quiz) => (
-                    <QuizSummary
-                      quiz={quiz}
-                      key={quiz._id}
-                      deleteQuizFromState={deleteQuizFromState}
-                    />
+                    <QuizSummary quiz={quiz} key={quiz._id} deleteQuizFromState={deleteQuizFromState} />
                   ))}
                 </div>
               </div>

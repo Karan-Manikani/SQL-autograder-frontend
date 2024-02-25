@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function StudentFailure() {
   return (
@@ -6,8 +6,8 @@ function StudentFailure() {
       <div className="w-[52%]">
         <h1 className="text-3xl text-center">Submission Unsuccessful ❌</h1>
         <p className="text-[#5e5e5e] mt-2 text-center">
-          We regret to inform you that your exam submission was not completed due to the expiration
-          of the allotted time.
+          Your quiz submission wasn't completed because either the allotted time expired or you've already submitted
+          your answers.
         </p>
       </div>
     </div>

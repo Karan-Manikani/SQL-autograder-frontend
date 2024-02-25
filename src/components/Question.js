@@ -3,6 +3,10 @@ import CodeEditor from "@uiw/react-textarea-code-editor";
 import Editor from "react-simple-code-editor";
 
 function Question(props) {
+  const handleChange = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="w-full bg-white drop-shadow-[0_0_10px_rgba(70,150,255,0.1)] rounded font-thin p-6 mb-8 font-[ubuntu]">
       <div className="flex justify-between items-center">
@@ -18,6 +22,9 @@ function Question(props) {
         placeholder="Write your code here"
         onChange={(e) => props.setCode(e.target.value, props.field)}
         padding={10}
+        onCopy={handleChange}
+        onCut={handleChange}
+        onPaste={handleChange}
         style={{
           fontSize: 16,
           backgroundColor: "#f4f4f4",
