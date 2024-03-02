@@ -143,6 +143,18 @@ function Quiz() {
       <p className="text-[#5e5e5e]">
         {quiz && quiz.branch} - {quiz && quiz.year}
       </p>
+      <p className="mt-4">
+        <b>Instructions:</b>
+      </p>
+      <p className="text-[#5e5e5e]">
+        Please provide responses <b>strictly</b> based on the questions.
+        <br />
+        Refrain from using aliases. For example, <b>do not</b> use aliases like "average_age" for the result of the
+        average age calculation.
+      </p>
+      <p className="text-[#5e5e5e]  text-sm mt-2">
+        PS: Sorry folks, we've had to disable the 'Ctrl+C, Ctrl+V' cheat codes for the SQL quiz :(
+      </p>
       <div className="flex justify-between">
         <div className="mt-8 w-[42%]">
           <div className="flex justify-between sticky top-[5%]">
@@ -151,7 +163,7 @@ function Quiz() {
               Time Remaining: {minutes < 10 ? "0" + minutes : minutes}:{seconds < 10 ? "0" + seconds : seconds}
             </p>
           </div>
-          <div className="font-mono mt-4 sticky top-[11%] text-xs">
+          <div className="font-mono pt-4 sticky top-[11%] text-xs select-none">
             {schema && <CodeBlock text={schema} language={"sql"} showLineNumbers={false} theme={monoBlue} />}
           </div>
         </div>

@@ -15,7 +15,7 @@ function Question(props) {
           {props.question.marks} {props.question.marks > 1 ? "Marks" : "Mark"}
         </p>
       </div>
-      <p className="font-normal mt-2">{props.question.question}</p>
+      <p className="font-normal mt-2 select-none">{props.question.question}</p>
       <CodeEditor
         value={props.code}
         language="sql"
